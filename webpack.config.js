@@ -3,7 +3,6 @@ const path = require('path')
 const webpack = require('webpack')
 
 // Webpack plugin to extract CSS
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
@@ -16,7 +15,7 @@ if(process.env.NODE_ENV === 'test') {
 
 module.exports = (env) => {
     const isProduction = env === "production"
-    // const CSSExtract = new ExtractTextPlugin('styles.css')
+    
     const CSSExtract = new MiniCssExtractPlugin({
         path: path.resolve(__dirname, 'public/styles'),
         filename: 'styles.css'
