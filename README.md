@@ -1,3 +1,4 @@
 # Expense-App
 # react-boilerplate
-H habit-tracker
+# habit-tracker
+# Tracker you habits
