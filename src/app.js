@@ -153,6 +153,6 @@ const HABITS = [
       }
   }
 
-  ReactDOM.render(
-    <HabitTable habits={HABITS} />, document.getElementById('app1')
-  )
+//   ReactDOM.render(
+//     <HabitTable habits={HABITS} />, document.getElementById('app1')
+//   )
