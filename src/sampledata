@@ -1,0 +1,23 @@
+Habit Data: 
+[ 
+{ 
+"currentStreak" : 1, 
+"frequencyTypeName" : "Every day", 
+"name" : "No smoking", 
+"selectedDays" : { 
+"tuesday" : 0, 
+"monday" : 0, 
+"friday" : 0, 
+"saturday" : 0, 
+"thursday" : 0, 
+"wednesday" : 0, 
+"sunday" : 0 
+}, 
+"completed" : [ 
+"2014-01-31 21:00:00 +0000" 
+], 
+"completionPercentage" : 100, 
+"longestStreak" : 1, 
+"createdAt" : "2014-02-02 12:25:29 +0000" 
+} 
+] 
