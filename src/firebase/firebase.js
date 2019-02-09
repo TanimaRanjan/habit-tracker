@@ -31,16 +31,17 @@ export { firebase, googleAuthProvider,  database as default }
 //     console.log('Unable to get data', e)
 //   })
 
- let userid='3VGcYAHUbSSWlglZfViybHhUWpW2'
- let id = '-LXasXWK-oC8tuBjUYMa'
+ //let userid='3VGcYAHUbSSWlglZfViybHhUWpW2'
+ //let id = '-LXasXWK-oC8tuBjUYMa'
  //let id ='-LXat92W8FjuUR6Jn15K'
- database.ref(`users/${userid}/habits/${id}/dates/`)
+ /*database.ref(`users/${userid}/habits/${id}/dates/`)
    .on('value', ((snapshot) => {
      snapshot.forEach((child) => {
-       console.log(child.key, child.val())
+     //  console.log(child.key, child.val())
+      
      })
    }))
-
+*/
     // database.ref(`users/${userid}/habits/${id}/dates/`).push({
     //    trackedON:6453543453,
     //   selected:'yes'
