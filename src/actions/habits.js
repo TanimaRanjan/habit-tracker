@@ -64,16 +64,15 @@ export const startTrackHabit = (habitData,id) => {
         const {
             trackedOn=0,
             selected='', 
-            // idI=0
-        // } = updates
         } = habitData
+
         const habit = {
             trackedOn, 
             selected
         }
+ 
         
-         let ids='-LXlEOTpxaaWycKmdFsz'
-        //let ids = id
+        let ids = habitData.id
         return database.ref(`users/${uid}/habits/${ids}/dates/`).push(habit)
             .then((ref) => {
                 dispatch(trackHabit(
@@ -95,12 +94,15 @@ export const removeHabit = ({id} ={}) => ({
 
 export const startRemoveHabit = ({id} = {}) => {
     return (dispatch, getState) => {
+        console.log('Remove Habit')
         const uid = getState().auth.uid
         return database.ref(`users/${uid}/habits/${id}`).remove().then(() => {
             dispatch(removeHabit({id}))
         })
     }
 }
+
+
 
 export const setHabit = (habit) => ({
     type : 'SET_HABIT',
@@ -110,16 +112,52 @@ export const setHabit = (habit) => ({
 export const startSetHabit = () => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid
+        
         return database.ref(`users/${uid}/habits`).once('value').then((snapshot) => {
             const habits = []
             snapshot.forEach((childSnapshot) => {
+                let childKey = childSnapshot.key
+                let childVal = childSnapshot.val()
+                let result 
+                //console.log(typeof(childVal.dates), childVal.dates)
+                let dateChild = childVal.dates
+                if(dateChild !== undefined) {
+                     result = Object.keys(dateChild).map((key)=> {
+                         let dateVal = dateChild[key]
+                        return {id:key, 
+                            ...dateVal
+                        }
+                    })
+                }
+                //console.log(typeof(childVal))
+                childVal.dates = result
+
+                console.log(result.length)
+                console.log(childVal)
+                // childVal.dates.forEach((dates_child) => {
+                //     let dateKey = dates_child.key
+                //     let dateChildVal = dates_child.val()
+                //     dates_array.push({
+                //         id:dateKey,
+                //         ...dateChildVal
+                //     })
+                // })
+                //console.log('Dates Array ',dates_array )
+                //console.log(childVal)
                 habits.push({
-                    id:childSnapshot.key,
-                    ...childSnapshot.val()
+                    id:childKey,
+                    ...childVal
                 })
+                // habits.push({
+                  //   id:childSnapshot.key,
+                 //    ...childSnapshot.val()
+                // })
             })
+
             dispatch(setHabit(habits))
+
         })
+       
     }
 }
 
