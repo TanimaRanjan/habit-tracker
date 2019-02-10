@@ -46,7 +46,7 @@ export const startAddHabit = (habitData = {}) => {
 }
 
 // export const trackHabit = (id, updates) => ({
-    export const trackHabit = (habit,id) => ({
+export const trackHabit = (habit,id) => ({
     type: 'TRACK_HABIT',
      id, 
     habit
@@ -58,27 +58,27 @@ export const startTrackHabit = (habitData,id) => {
         //  
     return (dispatch, getState) => {
 
-        console.log("StartTrackHabit ", habitData)
-        console.log("StartTrackHabit ",id)
+        //console.log("StartTrackHabit ", habitData)
+        //console.log("StartTrackHabit ",id)
         const uid = getState().auth.uid
         const {
             trackedOn=0,
             selected='', 
         } = habitData
 
-        const habit = {
+        const habitTracked = {
             trackedOn, 
             selected
         }
  
-        
-        let ids = habitData.id
-        return database.ref(`users/${uid}/habits/${ids}/dates/`).push(habit)
+        console.log(id)
+       // let ids = habitData.id
+        return database.ref(`users/${uid}/habits/${id}/dates/`).push(habitTracked)
             .then((ref) => {
                 dispatch(trackHabit(
                     {
                         id:ref.key, 
-                        ...habit
+                        ...habitTracked
                     }, id
                 ))
             }).catch((e) => {
@@ -92,6 +92,23 @@ export const removeHabit = ({id} ={}) => ({
     id
 })
 
+export const editHabit = (id, updates) => ({
+    type: 'EDIT_HABIT',
+    id,
+    updates
+})
+
+export const startEditHabit = (id, updates) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/habits/${id}`).update({
+            ...updates
+        }).then(() => {
+            dispatch((editHabit(id,updates)))
+        })
+    }
+}
+
 export const startRemoveHabit = ({id} = {}) => {
     return (dispatch, getState) => {
         console.log('Remove Habit')
@@ -101,7 +118,6 @@ export const startRemoveHabit = ({id} = {}) => {
         })
     }
 }
-
 
 
 export const setHabit = (habit) => ({
