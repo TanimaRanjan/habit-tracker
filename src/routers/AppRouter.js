@@ -6,6 +6,7 @@ import HelpPage from '../components/HelpPage'
 import DashboardPage from '../components/DashboardPage'
 import AddHabitPage  from '../components/AddHabitPage'
 import TrackHabitPage from '../components/TrackHabitPage'
+import EditHabitPage from '../components/EditHabitPage'
 import LoginPage from '../components/LoginPage'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
@@ -19,6 +20,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/dashboard" component={DashboardPage} />
                 <PrivateRoute path="/create" component={AddHabitPage} />
                 <PrivateRoute path="/track/:id" component={TrackHabitPage} />
+                <PrivateRoute path="/edit/:id" component={EditHabitPage} />
                 <Route path="/help" component={HelpPage}/>
                 <Route component={NotFoundPage}/>
             </Switch>
