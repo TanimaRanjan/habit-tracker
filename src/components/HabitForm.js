@@ -4,10 +4,11 @@ import moment from 'moment';
 class HabitForm extends React.Component {
     constructor(props) {
         super(props)
+        console.log('Habit Form --- ', props)
         this.state = {
-            name:props.habit ? props.habit.name : '',
-            description:props.habit ? props.habit.description : '',
-            chain:props.habit ? props.habit.chain : 'Longest',
+            name: props.habit ? props.habit.name : '',
+            description: props.habit ? props.habit.description : '',
+            chain:props.habit ? props.habit.chain : 'longest',
             createdAt: props.habit ? moment(props.habit.createdAt) : moment(),
             error: ''
         }
@@ -54,6 +55,7 @@ class HabitForm extends React.Component {
                         className='text-input'
                         type='text'
                         placeholder='Habit'
+                        autoFocus
                         value={this.state.name}
                         onChange={this.onNameChange} 
                     ></input>            
