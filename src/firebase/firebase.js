@@ -1,5 +1,7 @@
-import * as firebase from 'firebase'
-import moment from 'moment';
+import * as firebase from 'firebase/app'
+import 'firebase/database'
+import 'firebase/auth'
+
 
 // Initialize Firebase
 const config = {
