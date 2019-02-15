@@ -58,12 +58,12 @@ export const startTrackHabit = (habitData,id) => {
         //  
     return (dispatch, getState) => {
 
-        //console.log("StartTrackHabit ", habitData)
+        console.log("StartTrackHabit ", habitData)
         //console.log("StartTrackHabit ",id)
         const uid = getState().auth.uid
         const {
             trackedOn=0,
-            selected='', 
+            selected='yes', 
         } = habitData
 
         const habitTracked = {
@@ -148,8 +148,8 @@ export const startSetHabit = () => {
                 //console.log(typeof(childVal))
                 childVal.dates = result
 
-                console.log(result.length)
-                console.log(childVal)
+             //   console.log(result.length)
+              //  console.log(childVal)
                 // childVal.dates.forEach((dates_child) => {
                 //     let dateKey = dates_child.key
                 //     let dateChildVal = dates_child.val()
