@@ -1,0 +1,40 @@
+<section id="habit-details">
+  <div class="container" ng-show="habit">
+    <h2>{{habit.name}}</h2>
+    
+    <table>
+      <thead>
+        <th>Goal</th>
+        <th>Completion</th>
+        <th>Completed</th>
+        <th>Longest Streak</th>
+        <th>Started</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{habit.frequencyTypeName}}</td>
+          <td>{{habit.completionPercentage}}%</td>
+          <td>{{habit.completed.length}} times</td>
+          <td>{{habit.longestStreak}}</td>
+          <td>{{habit.createdAt}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="productive-days" class="bar-chart">
+      <h3>Productive Days</h3>
+      <svg></svg>
+    </div>
+
+    <div id="productive-months" class="bar-chart">
+      <h3>Productivity by Month <small>(in last year)</small></h3>
+      <svg></svg>
+    </div>
+
+    <ul>
+      <li ng-repeat="date in habit.completed">{{date}}</li>
+    </ul>
+  </div>
+
+
+</section>
