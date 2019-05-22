@@ -11,6 +11,8 @@ const HabitListItem = ({id, name, description, frequency, createdAt, tag, endDat
             <h3 className='list-item__title'>{name}</h3>
             <div className='list-body'>
             {
+                // Doesnt work for new Habit Add as there is no dates field 
+                // May be adding empty date 
                     dates.length === 0 ? (
                     <div className='list-item list-item__message'>
                         <span>No Habits</span>
